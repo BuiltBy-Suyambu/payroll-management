@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracking - PayrollMS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">PayrollMS</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li><a href="attendance.html" class="active">Attendance</a></li>
+            <li><a href="payroll.html">Payroll</a></li>
+            <li><a href="reports.html">Reports</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Attendance Tracking</h1>
+        </section>
+
+        <section class="attendance-controls">
+            <div class="control-group">
+                <label for="attendance-date">Select Date:</label>
+                <input type="date" id="attendance-date">
+            </div>
+            <div class="control-group">
+                <label for="attendance-dept">Filter by Department:</label>
+                <select id="attendance-dept" onchange="filterAttendance()">
+                    <option value="all">All Departments</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Check In</th>
+                        <th>Check Out</th>
+                        <th>Hours Worked</th>
+                    </tr>
+                </thead>
+                <tbody id="attendance-table-body">
+                </tbody>
+            </table>
+        </section>
+
+        <section class="attendance-actions">
+            <button class="btn-primary" onclick="markAllPresent()">Mark All Present</button>
+            <button class="btn-secondary" onclick="saveAttendance()">Save Attendance</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Payroll Management System</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/attendance.js"></script>
+</body>
+</html>
