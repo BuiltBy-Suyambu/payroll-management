@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - PayrollMS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo">P</span> PayrollMS
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li><a href="attendance.html" class="active">Attendance</a></li>
+            <li><a href="payroll.html">Payroll</a></li>
+            <li><a href="reports.html">Reports</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Attendance Management</h1>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="attendanceDate">Select Date</label>
+                <input type="date" id="attendanceDate">
+            </div>
+            <div class="filter-group">
+                <label for="deptFilter">Department</label>
+                <select id="deptFilter" onchange="filterByDept()">
+                    <option value="all">All Departments</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+            <button class="btn-primary" onclick="loadAttendance()">Load</button>
+        </div>
+
+        <div class="table-box">
+            <div class="table-header">
+                <h2>Mark Attendance</h2>
+                <div class="quick-actions">
+                    <button class="btn-secondary" onclick="markAll('present')">Mark All Present</button>
+                    <button class="btn-secondary" onclick="markAll('absent')">Mark All Absent</button>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceTable">
+                </tbody>
+            </table>
+            <div class="table-actions">
+                <button class="btn-primary" onclick="saveAttendance()">Save Attendance</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Instructions</h3>
+            <ul>
+                <li>Select the date for which you want to mark attendance</li>
+                <li>Use Present/Absent dropdown for each employee</li>
+                <li>Click "Mark All Present/Absent" for bulk marking</li>
+                <li>Don't forget to click "Save Attendance" to store the data</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>2026 Payroll Management System | Web Technology Project</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

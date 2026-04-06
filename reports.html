@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - PayrollMS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo">P</span> PayrollMS
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li><a href="attendance.html">Attendance</a></li>
+            <li><a href="payroll.html">Payroll</a></li>
+            <li><a href="reports.html" class="active">Reports</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Monthly Reports</h1>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="reportMonth">Select Month</label>
+                <input type="month" id="reportMonth" onchange="loadReport()">
+            </div>
+        </div>
+
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="card-info">
+                    <span class="card-label">Total Employees</span>
+                    <span class="card-value" id="totalEmployees">0</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="card-info">
+                    <span class="card-label">Working Days</span>
+                    <span class="card-value" id="workingDays">0</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="card-info">
+                    <span class="card-label">Total Salary</span>
+                    <span class="card-value" id="totalSalary">0</span>
+                </div>
+            </div>
+            <div class="summary-card highlight">
+                <div class="card-info">
+                    <span class="card-label">Avg. Attendance</span>
+                    <span class="card-value" id="avgAttendance">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h2>Department-wise Summary</h2>
+            <div class="chart-container" id="deptChart">
+            </div>
+        </div>
+
+        <div class="table-box">
+            <div class="table-header">
+                <h2>Employee Salary Details</h2>
+                <button class="btn-secondary" onclick="exportReport()">Export</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Days Present</th>
+                        <th>Net Salary</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="reportTable">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>2026 Payroll Management System | Web Technology Project</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
