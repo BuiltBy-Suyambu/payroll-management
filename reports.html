@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - PayrollMS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">PayrollMS</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li><a href="attendance.html">Attendance</a></li>
+            <li><a href="payroll.html">Payroll</a></li>
+            <li><a href="reports.html" class="active">Reports</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Reports & Analytics</h1>
+        </section>
+
+        <section class="report-controls">
+            <div class="control-group">
+                <label for="report-type">Report Type:</label>
+                <select id="report-type" onchange="loadReport()">
+                    <option value="summary">Payroll Summary</option>
+                    <option value="department">Department-wise</option>
+                    <option value="attendance">Attendance Report</option>
+                    <option value="employee">Employee-wise</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="report-month">Select Month:</label>
+                <input type="month" id="report-month" onchange="loadReport()">
+            </div>
+            <button class="btn-secondary" onclick="exportReport()">Export to CSV</button>
+        </section>
+
+        <section class="report-content">
+            <div id="report-container">
+                <div class="report-card">
+                    <h3>Monthly Overview</h3>
+                    <div class="report-grid">
+                        <div class="report-stat">
+                            <span class="report-label">Total Payroll</span>
+                            <span class="report-value" id="report-total">₹0</span>
+                        </div>
+                        <div class="report-stat">
+                            <span class="report-label">Employees Paid</span>
+                            <span class="report-value" id="report-count">0</span>
+                        </div>
+                        <div class="report-stat">
+                            <span class="report-label">Avg. Salary</span>
+                            <span class="report-value" id="report-avg">₹0</span>
+                        </div>
+                        <div class="report-stat">
+                            <span class="report-label">Attendance Rate</span>
+                            <span class="report-value" id="report-attendance">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <h3>Department Breakdown</h3>
+                    <div id="department-chart" class="chart-container">
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <h3>Recent Payroll Records</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Department</th>
+                                <th>Net Salary</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Payroll Management System</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/reports.js"></script>
+</body>
+</html>
