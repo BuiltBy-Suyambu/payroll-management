@@ -19,8 +19,12 @@ function generatePayroll() {
     const workingDays = getWorkingDaysInMonth(year, monthNum - 1);
 
     payrollData[month] = employees.map(emp => {
-        const empAttendance = attendanceData[month] || [];
-        const empRecords = empAttendance.filter(a => a.empId === emp.id);
+        // Get all attendance records for this month (dates like "2026-04-08")
+        const allMonthAttendance = Object.entries(attendanceData)
+            .filter(([date]) => date.startsWith(month))
+            .flatMap(([, records]) => records);
+        
+        const empRecords = allMonthAttendance.filter(a => a.empId === emp.id);
         const presentDays = empRecords.filter(r => r.status === 'present').length;
 
         // Calculate salary components
